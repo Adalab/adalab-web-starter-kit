@@ -44,3 +44,7 @@ node_modules/
 ### Sass ###
 .sass-cache/
 *.css.map
+
+
+### JS Sourcemaps ###
+*.js.map
