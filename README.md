@@ -16,23 +16,17 @@ $ gulp
 ```
 Lanza un webserver con BrowserSync y varios watchers estarán pendientes de los archivos SCSS/JS/HTML para recargar el navegador cuando se necesite.
 
-### Process a production-ready distribution
+### Versión lista para subir a producción
 ```
 $ gulp deploy
 ```
-Delete and reprocess the public folder with optimized versions of your HTML/CSS/JS files.
+Genera los CSS y JS minimizados y sin sourcemaps, listos para subir a producción.
 
-### Compress a production-ready distribution
-```
-$ gulp zipit
-```
-Delete and reprocess the public folder with optimized versions of your HTML/CSS/JS files and compress it in a .zip file.
 
-## Folder structure
-Our **gulpfile.js** uses a configuraton JSON file to set source and destination files of the project.
-Check config.json out and edit what you need.
+## Estructura del proyecto
+Nuestro **gulpfile.js** usa un JSON de configuración con las rutas de los archivos a generar/vigilar.
 
-The folder structure looks like:
+La estructura de carpetas tiene esta pinta:
 ```
 /
 |- css
@@ -47,13 +41,11 @@ The folder structure looks like:
 
 
 ## CSS
-Asteroids does not include a CSS reset stylesheet anymore but we have included two awesome tools:
-* A **csscomb** JSON file to use with your code editor as your own risk :)
-* The risky [**gulp-combine-mq**](https://www.npmjs.com/package/gulp-combine-mq) package to group ans combine all your mediaqueries.
-
-## Browser Support
-That's up to you ;)
+Viene incluído el paquete [**gulp-combine-mq**](https://www.npmjs.com/package/gulp-combine-mq) que agrupa todas las medaqueries al final del documento css.
 
 
-## Request a feature
-Do you miss something? Feel free to request a feature or contribute to make it better ;)
+## JS
+En el JSON de configuración especificamos los archivos JS que utilizamos y en el orden que deben procesarse.
+
+## Falta algo?
+Echas de menos que el kit haga algo en concreto? Pidelo sin problema a través de los Issues o si te animas a mejorarlo mándanos un PR :)

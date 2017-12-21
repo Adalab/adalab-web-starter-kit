@@ -2,46 +2,17 @@ var autoprefixer = require('gulp-autoprefixer');
 var browserSync  = require('browser-sync');
 var combineMq    = require('gulp-combine-mq');
 var concat       = require('gulp-concat');
+var config       = require('./config.json');
 var cssminifiy   = require('gulp-clean-css');
 var gulp         = require('gulp');
 var gutil        = require('gulp-util');
 var notify       = require('gulp-notify');
 var plumber      = require('gulp-plumber');
 var reload       = browserSync.reload;
-var rename       = require('gulp-rename');
-var runSequence  = require('run-sequence');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
-var zip          = require('gulp-zip');
 
-
-
-
-
-// > Variables
-config = {
-	"scss": {
-		"src": "scss/**/*.scss",
-		"dest": "css/"
-	},
-	"js": {
-		"src": [
-			"js/main.js"
-		],
-		"dest": "js/"
-	},
-	"images": "images/**/*.{gif,jpg,png,svg}",
-	"html": "**/*.html"
-};
-var sassSourceFolder = 'scss/**/*.scss';
-var sassDestFolder = 'css/';
-var imgFolder = 'images/**/*.{gif,jpg,png,svg}';
-var htmlFolder = '**/*.html';
-var jsSourceFiles = [
-	'js/main.js'
-];
-var jsDestFolder = 'js/';
 
 
 
@@ -56,7 +27,7 @@ var onError = function (err) {
 
 
 
-// > Procesa los archivos SASS/SCSS, añade sourcempas y autoprefixer
+// > Procesa los archivos SASS/SCSS, añade sourcemaps y autoprefixer
 gulp.task('styles', function(cb) {
 	return gulp.src(config.scss.src)
 		.pipe(sourcemaps.init())
@@ -84,7 +55,32 @@ gulp.task('styles', function(cb) {
 
 
 
-// > Procesa los scripts concatenando y minimizando
+// > Procesa los archivos SASS/SCSS, sin sourcemaps, minimizados y con autoprefixer
+gulp.task('styles-min', function(cb) {
+	return gulp.src(config.scss.src)
+		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(sass({
+			outputStyle: 'compressed',
+		}))
+		.pipe(combineMq({
+			beautify: false
+		}))
+		.pipe(autoprefixer({
+			browsers: [
+				'last 2 versions',
+				'ie >= 10'
+			],
+			cascade: false
+		}))
+		.pipe(gulp.dest(config.scss.dest))
+		.pipe(notify({message: 'CSS MIN OK', onLast: true}));
+});
+
+
+
+
+
+// > Procesa los scripts concatenando
 gulp.task('scripts', function(){
 	return gulp.src(config.js.src)
 		.pipe(sourcemaps.init())
@@ -101,8 +97,22 @@ gulp.task('scripts', function(){
 
 
 
+// > Procesa los scripts concatenando, minimizando y sin sourcemaps
+gulp.task('scripts-min', function(){
+	return gulp.src(config.js.src)
+		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(concat('main.min.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest(config.js.dest))
+		.pipe(notify({message: 'JS MIN OK', onLast: true}));
+});
 
-// > Create a development server with BrowserSync
+
+
+
+
+
+// > Arranca el servidor web con BrowserSync
 gulp.task('default', ['styles', 'scripts'], function () {
 	browserSync.init({
 		server : {
@@ -120,19 +130,15 @@ gulp.task('default', ['styles', 'scripts'], function () {
 
 
 
-
-// > Recarga las ventanas del navegador
-gulp.task('bs-reload', function () {
-	browserSync.reload();
+// > Genera una versión lista para producción
+gulp.task('deploy', ['styles-min', 'scripts-min'], function () {
 });
 
 
 
 
 
-// > ZIP the public folder
-gulp.task('zipit', ['deploy'], function() {
-	return gulp.src(config.zip.src)
-		.pipe(zip(config.zip.name))
-		.pipe(gulp.dest(config.zip.dest));
+// > Recarga las ventanas del navegador
+gulp.task('bs-reload', function () {
+	browserSync.reload();
 });
