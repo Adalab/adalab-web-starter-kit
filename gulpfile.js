@@ -19,7 +19,7 @@ var uglify       = require('gulp-uglify');
 
 // > Gestiona los errores
 var onError = function (err) {
-	gutil.beep();
+	//gutil.beep();
 	console.log(err);
 };
 
@@ -28,8 +28,8 @@ var onError = function (err) {
 
 
 // > Procesa los archivos SASS/SCSS, añade sourcemaps y autoprefixer
-gulp.task('styles', function(cb) {
-	return gulp.src(config.scss.src)
+gulp.task('styles', function(done) {
+	gulp.src(config.scss.src)
 		.pipe(sourcemaps.init())
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 		.pipe(sass({
@@ -49,6 +49,7 @@ gulp.task('styles', function(cb) {
 		.pipe(gulp.dest(config.scss.dest))
 		.pipe(browserSync.reload({ stream:true }))
 		.pipe(notify({message: 'CSS OK', onLast: true}));
+		done();
 });
 
 
@@ -56,8 +57,8 @@ gulp.task('styles', function(cb) {
 
 
 // > Procesa los archivos SASS/SCSS, sin sourcemaps, minimizados y con autoprefixer
-gulp.task('styles-min', function(cb) {
-	return gulp.src(config.scss.src)
+gulp.task('styles-min', function(done) {
+	gulp.src(config.scss.src)
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 		.pipe(sass({
 			outputStyle: 'compressed',
@@ -74,6 +75,7 @@ gulp.task('styles-min', function(cb) {
 		}))
 		.pipe(gulp.dest(config.scss.dest))
 		.pipe(notify({message: 'CSS MIN OK', onLast: true}));
+		done();
 });
 
 
@@ -81,8 +83,8 @@ gulp.task('styles-min', function(cb) {
 
 
 // > Procesa los scripts concatenando
-gulp.task('scripts', function(){
-	return gulp.src(config.js.src)
+gulp.task('scripts', function(done){
+	gulp.src(config.js.src)
 		.pipe(sourcemaps.init())
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 		.pipe(concat('main.min.js'))
@@ -91,6 +93,7 @@ gulp.task('scripts', function(){
 		.pipe(gulp.dest(config.js.dest))
 		.pipe(browserSync.reload({ stream:true }))
 		.pipe(notify({message: 'JS OK', onLast: true}));
+		done();
 });
 
 
@@ -98,22 +101,22 @@ gulp.task('scripts', function(){
 
 
 // > Procesa los scripts concatenando, minimizando y sin sourcemaps
-gulp.task('scripts-min', function(){
-	return gulp.src(config.js.src)
+gulp.task('scripts-min', function(done){
+	gulp.src(config.js.src)
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 		.pipe(concat('main.min.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest(config.js.dest))
 		.pipe(notify({message: 'JS MIN OK', onLast: true}));
+		done();
 });
 
 
 
 
 
-
 // > Arranca el servidor web con BrowserSync
-gulp.task('default', ['styles', 'scripts'], function () {
+gulp.task('default', gulp.series(['styles', 'scripts'], function(done) {
 	browserSync.init({
 		server : {
 			baseDir: "./"
@@ -121,24 +124,30 @@ gulp.task('default', ['styles', 'scripts'], function () {
 		ghostMode: false,
 		online: true
 	});
-	gulp.watch(config.images, ['bs-reload']);
-	gulp.watch(config.scss.src, ['styles']);
-	gulp.watch(config.js.src, ['bs-reload', ['scripts']]);
-	gulp.watch(config.html, ['bs-reload']);
-});
+	gulp.watch(config.images, gulp.series('bs-reload'));
+	gulp.watch(config.scss.src, gulp.series('styles'));
+	gulp.watch(config.js.src, gulp.series(['scripts', 'bs-reload']));
+	gulp.watch(config.html, gulp.series('bs-reload'));
+	done();
+}));
+
 
 
 
 
 // > Genera una versión lista para producción
-gulp.task('deploy', ['styles-min', 'scripts-min'], function () {
-});
+gulp.task('deploy', gulp.series(['styles-min', 'scripts-min'], function(done) {
+    console.log('> Versión de producción: OK');
+		done();
+}));
+
 
 
 
 
 
 // > Recarga las ventanas del navegador
-gulp.task('bs-reload', function () {
+gulp.task('bs-reload', function (done) {
 	browserSync.reload();
+	done();
 });
