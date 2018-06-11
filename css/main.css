@@ -1,16 +1,6 @@
 body {
-  background: url("../images/logo-adalab-80px.png") center center no-repeat #ff0000;
+  background: url("../images/logo-adalab-80px.png") center center no-repeat #fff;
   height: 100vh;
-}
-
-@media (min-width: 400px) {
-  body {
-    background-color: blue;
-  }
-
-  .title {
-    background-color: pink;
-  }
 }
 
 /*# sourceMappingURL=main.css.map */

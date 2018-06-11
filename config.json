@@ -10,5 +10,8 @@
 		"dest": "js/"
 	},
 	"images": "images/**/*.{gif,jpg,png,svg}",
-	"html": "**/*.html"
+	"html": [
+    "**/*.html",
+    "!node_modules/**/*.*"
+  ]
 }
