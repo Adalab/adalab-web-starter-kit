@@ -4,6 +4,8 @@
 	"description": "Adalab web starter kit",
 	"dependencies": {
 		"browser-sync": "*",
+		"eslint": "^4.19.1",
+		"gulp": "^4",
 		"gulp-autoprefixer": "*",
 		"gulp-clean-css": "*",
 		"gulp-combine-mq": "*",
@@ -15,9 +17,8 @@
 		"gulp-sourcemaps": "*",
 		"gulp-uglify": "*",
 		"gulp-util": "*",
-		"gulp": "^4",
-		"run-sequence": "*",
-		"gulp-zip": "*"
+		"gulp-zip": "*",
+		"run-sequence": "*"
 	},
 	"devDependencies": {},
 	"scripts": {

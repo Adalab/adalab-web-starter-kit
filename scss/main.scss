@@ -1,6 +1,15 @@
 @import 'core/settings';
 
 body {
-	background: url('../images/logo-adalab-80px.png') center center no-repeat #fff;
+	background: url('../images/logo-adalab-80px.png') center center no-repeat #ff0000;
 	height: 100vh;
+	@media (min-width: 400px) {
+		background-color: blue;
+	}
+}
+
+.title {
+	@media (min-width: 400px) {
+		background-color: pink;
+	}
 }
