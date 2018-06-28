@@ -34,8 +34,8 @@ gulp.task('styles', function(done) {
     }))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(config.scss.dest))
-    .pipe(browserSync.reload({ stream:true }))
-    .pipe(notify({message: 'CSS OK', onLast: true}));
+    .pipe(browserSync.reload({ stream:true }));
+    //.pipe(notify({message: 'CSS OK', onLast: true}));
   done();
 });
 
@@ -74,8 +74,8 @@ gulp.task('scripts', function(done){
     //.pipe(uglify())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(config.js.dest))
-    .pipe(browserSync.reload({ stream:true }))
-    .pipe(notify({message: 'JS OK', onLast: true}));
+    .pipe(browserSync.reload({ stream:true }));
+    //.pipe(notify({message: 'JS OK', onLast: true}));
   done();
 });
 
@@ -95,7 +95,7 @@ gulp.task('scripts-min', function(done){
 
 
 // > Arranca el servidor web con BrowserSync
-gulp.task('default', gulp.series(['styles'], function(done) {
+gulp.task('default', gulp.series(['styles','scripts'], function(done) {
   browserSync.init({
     server : {
       baseDir: './'
@@ -113,7 +113,7 @@ gulp.task('default', gulp.series(['styles'], function(done) {
 
 
 // > Genera una versión lista para producción
-gulp.task('deploy', gulp.series(['styles-min'], function(done) {
+gulp.task('deploy', gulp.series(['styles-min','scripts-min'], function(done) {
   console.log('> Versión de producción: OK');
   done();
 }));
