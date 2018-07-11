@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "Adalab web starter kit",
 	"dependencies": {
-		"browser-sync": "*",
+		"browser-sync": "^2.24.5",
 		"eslint": "^4.19.1",
 		"gulp": "^4",
 		"gulp-autoprefixer": "*",
