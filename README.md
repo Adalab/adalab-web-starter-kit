@@ -1,10 +1,10 @@
 ![Adalab](images/logo-adalab-80px.png)
 # Adalab web starter kit
 Ahoy! Esta es nuestro Starter Kit en node/gulp para este primer contacto con el desarrollo web
-Incluye SCSS y un web server.
+Incluye SCSS, un sistema de plantillas HTMl y un web server.
 
 ## Guía de inicio rápido
-Necesitarás instalar [Node.js](https://nodejs.org/) y [Gulp](https://gulpjs.com) para trabajar con este Starter Kit, luego:  
+Necesitarás instalar [Node.js](https://nodejs.org/) y [Gulp](https://gulpjs.com) para trabajar con este Starter Kit, luego:
 1. Descarga o clona el repositorio
 2. Instala las dependencias locales con `$ npm install`
 3. Arranca el kit con `$ gulp`
@@ -15,7 +15,7 @@ Necesitarás instalar [Node.js](https://nodejs.org/) y [Gulp](https://gulpjs.com
 - Instalamos el comando de gulp de forma global para poder usarlo desde cualquier carpeta usando `npm install --global gulp-cli`
 
 > ### Cada vez que descarguemos o clonemos un repo:
-- `npm install` para instalar los paquetes necesarios para convertir Sass a CSS, minificarlo, etc.
+- `npm install` para instalar los paquetes necesarios para convertir Sass a CSS, minizarlo, etc.
 
 > ### Cada vez que estemos trabajando con nuestro código:
 - Desde nuestra terminal, ejecutamos el comando `gulp` para que realice la tarea por defecto, que en el caso del `gulpfile.js` que tenemos en adalab-web-starter-kit estará pendiente de nuestros archivos Sass, html y JavaScript y los compilará, minificará y/o recargará el servidor cada vez que hagamos un cambio
@@ -25,13 +25,13 @@ Necesitarás instalar [Node.js](https://nodejs.org/) y [Gulp](https://gulpjs.com
 ```
 $ gulp
 ```
-Lanza un webserver con BrowserSync y varios watchers estarán pendientes de los archivos SCSS/JS/HTML para recargar el navegador cuando se necesite.
+Lanza un webserver con BrowserSync y varios watchers estarán pendientes de los archivos SCSS/JS/HTML, en la carpeta **public/**, para recargar el navegador cuando se necesite.
 
 ### Versión lista para subir a producción
 ```
-$ gulp deploy
+$ gulp docs
 ```
-Genera los CSS y JS minimizados y sin sourcemaps, listos para subir a producción.
+En la carpeta **docs/** genera los CSS y JS minimizados y sin sourcemaps listos para subir al repo y activar GitHub Pages en `master/docs`.
 
 
 ## Estructura del proyecto
@@ -40,16 +40,20 @@ Nuestro **gulpfile.js** usa un JSON de configuración con las rutas de los archi
 La estructura de carpetas tiene esta pinta:
 ```
 /
-|- css
-|- images
-|- js
-`- scss
-   |- core
-   |- layout
-   |- components
-   `- pages
+`- _src
+   |- assets
+   |  |- images
+   |  |- js
+   |  `- scss
+   |     `- core
+   |
+   `- templates
+      `- partials
+
 ```
 
+## HTML
+Viene incluído el paquete [**gulp-html-partial**](https://www.npmjs.com/package/gulp-html-partial) que nos va a permitir tener un sistema de plantillas html
 
 ## CSS
 Viene incluído el paquete [**gulp-combine-mq**](https://www.npmjs.com/package/gulp-combine-mq) que agrupa todas las medaqueries al final del documento css.
