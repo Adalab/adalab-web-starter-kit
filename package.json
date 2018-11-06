@@ -1,28 +1,28 @@
 {
 	"name": "AdalabWebStarterKit",
-	"version": "1.0.0",
+	"version": "2.0.2",
 	"description": "Adalab web starter kit",
 	"dependencies": {
-		"browser-sync": "^2.24.5",
+		"browser-sync": "^2.26.3",
+		"del": "^3.0.0",
 		"eslint": "^4.19.1",
 		"gulp": "^4",
 		"gulp-autoprefixer": "*",
 		"gulp-clean-css": "*",
 		"gulp-combine-mq": "*",
 		"gulp-concat": "*",
+		"gulp-html-partial": "^1.0.1",
 		"gulp-notify": "*",
 		"gulp-plumber": "*",
 		"gulp-rename": "*",
-		"gulp-sass": "*",
+		"gulp-sass": "4.0.2",
 		"gulp-sourcemaps": "*",
 		"gulp-uglify": "*",
-		"gulp-util": "*",
 		"gulp-zip": "*",
 		"run-sequence": "*"
 	},
-	"devDependencies": {},
 	"scripts": {
-    "start": "gulp",
+		"start": "gulp",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {

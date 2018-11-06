@@ -1,17 +1,28 @@
 {
+  "html": {
+    "src": "_src/templates/*.html",
+    "partials": "_src/templates/partials/",
+    "dest": "public/",
+    "dist": "docs/"
+  },
 	"scss": {
-		"src": "scss/**/*.scss",
-		"dest": "css/"
+		"src": "_src/assets/scss/**/*.scss",
+		"dest": "public/assets/css/",
+    "dist": "docs/assets/css/"
 	},
 	"js": {
 		"src": [
-			"js/main.js"
+			"_src/assets/js/main.js"
 		],
-		"dest": "js/"
+		"dest": "public/assets/js/",
+    "dist": "docs/assets/js/"
 	},
-	"images": "images/**/*.{gif,jpg,png,svg}",
-	"html": [
-    "**/*.html",
-    "!node_modules/**/*.*"
-  ]
+	"images": {
+    "src": "_src/assets/images/**/*.{gif,jpg,png,svg}",
+    "dest": "public/assets/images/",
+    "dist": "docs/assets/images/"
+  },
+  "watch": {
+   "html": "_src/**/*.html"
+  }
 }
