@@ -18,7 +18,7 @@
     "dist": "docs/assets/js/"
 	},
 	"images": {
-    "src": "_src/assets/images/**/*.{gif,jpg,png,svg}",
+    "src": "_src/assets/images/**/*.{gif,jpg,jpeg,JPG,JPEG,png,svg}",
     "dest": "public/assets/images/",
     "dist": "docs/assets/images/"
   },
