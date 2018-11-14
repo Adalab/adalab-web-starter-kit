@@ -153,9 +153,7 @@ gulp.task('default', gulp.series(['clean','html', 'styles','scripts', 'images'],
   browserSync.init({
     server : {
       baseDir: './public/'
-    },
-    ghostMode: false,
-    online: true
+    }
   });
   gulp.watch(config.watch.html, gulp.series(['html', 'bs-reload']));
   gulp.watch(config.images.src, gulp.series(['images', 'bs-reload']));
