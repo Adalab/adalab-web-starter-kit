@@ -42,6 +42,7 @@ La estructura de carpetas tiene esta pinta:
 /
 `- _src
    |- assets
+   |  |- icons
    |  |- images
    |  |- js
    |  `- scss
@@ -55,12 +56,17 @@ La estructura de carpetas tiene esta pinta:
 ## HTML
 Viene incluído el paquete [**gulp-html-partial**](https://www.npmjs.com/package/gulp-html-partial) que nos va a permitir tener un sistema de plantillas html
 
-## CSS
-Viene incluído el paquete [**gulp-combine-mq**](https://www.npmjs.com/package/gulp-combine-mq) que agrupa todas las medaqueries al final del documento css.
+## Imágenes e iconos
+Tenemos en **_src/** una carpeta para las imágenes del proyecto y una para los iconos como el favicon o los iconos de dispositivos móviles. Estos últimos se generan en la raíz de las carpetas **public/** y **docs/**
 
+## CSS
+Viene incluído el paquete [**gulp-combine-mq**](https://www.npmjs.com/package/gulp-combine-mq) que agrupa todas las mediaqueries al final del documento css.
 
 ## JS
-En el JSON de configuración especificamos los archivos JS que utilizamos y en el orden que deben procesarse.
+Podemos usar parciales de JS: en el JSON de configuración, **config.json** especificamos los archivos JS que utilizamos y en el orden que deben procesarse.
+
+## ¿Cómo actualizo si tengo una versión anterior?
+En principio puedes descargar todos los archivos fuera de **_src/** y sustituir los de tu proyecto. Además deberías replicar la estructura de carpetas dentro de **_src/**.
 
 ## Falta algo?
 Echas de menos que el kit haga algo en concreto? Pidelo sin problema a través de los Issues o si te animas a mejorarlo mándanos un PR :)
