@@ -84,6 +84,16 @@ gulp.task('images', function(done) {
 
 
 
+// >> Copy icon files
+gulp.task('icons', function(done) {
+  gulp.src(config.icons.src)
+    .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
+    .pipe(gulp.dest(config.icons.dest));
+  done();
+});
+
+
+
 // > Production Tasks
 // > Delete Public folder
 gulp.task('clean-dist', del.bind(null, ['docs']));
@@ -148,17 +158,26 @@ gulp.task('images-dist', function(done) {
 
 
 
+// >> Copy icon files
+gulp.task('icons-dist', function(done) {
+  gulp.src(config.icons.src)
+    .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
+    .pipe(gulp.dest(config.icons.dist));
+  done();
+});
+
+
+
 // > Watchers + BrowserSync server
-gulp.task('default', gulp.series(['clean','html', 'styles','scripts', 'images'], function(done) {
+gulp.task('default', gulp.series(['clean','html', 'styles','scripts', 'images', 'icons'], function(done) {
   browserSync.init({
     server : {
       baseDir: './public/'
-    },
-    ghostMode: false,
-    online: true
+    }
   });
   gulp.watch(config.watch.html, gulp.series(['html', 'bs-reload']));
   gulp.watch(config.images.src, gulp.series(['images', 'bs-reload']));
+  gulp.watch(config.icons.src, gulp.series(['icons', 'bs-reload']));
   gulp.watch(config.scss.src, gulp.series('styles'));
   gulp.watch(config.js.src, gulp.series(['scripts', 'bs-reload']));
   done();
@@ -167,7 +186,7 @@ gulp.task('default', gulp.series(['clean','html', 'styles','scripts', 'images'],
 
 
 // > Build a production-ready version of your proyect
-gulp.task('docs', gulp.series(['clean-dist','html-dist','styles-dist','scripts-dist', 'images-dist'], function(done) {
+gulp.task('docs', gulp.series(['clean-dist','html-dist','styles-dist','scripts-dist', 'images-dist', 'icons-dist'], function(done) {
   console.log('🦄 Build OK!');
   done();
 }));

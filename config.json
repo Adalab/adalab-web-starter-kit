@@ -1,4 +1,9 @@
 {
+  "icons": {
+    "src": "_src/assets/icons/*.*",
+    "dest": "public/",
+    "dist": "docs/"
+  },
   "html": {
     "src": "_src/templates/*.html",
     "partials": "_src/templates/partials/",
