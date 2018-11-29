@@ -17,7 +17,7 @@
 		"gulp-rename": "*",
 		"gulp-sass": "4.0.2",
 		"gulp-sourcemaps": "*",
-		"gulp-uglify": "*",
+		"gulp-uglify-es": "^1.0.4",
 		"gulp-zip": "*",
 		"run-sequence": "*"
 	},

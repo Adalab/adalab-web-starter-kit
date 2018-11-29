@@ -12,7 +12,7 @@ const notify       = require('gulp-notify');
 const plumber      = require('gulp-plumber');
 const sass         = require('gulp-sass');
 const sourcemaps   = require('gulp-sourcemaps');
-const uglify       = require('gulp-uglify');
+const uglify       = require('gulp-uglify-es').default;
 
 
 // > Dev tasks
@@ -130,7 +130,7 @@ gulp.task('styles-dist', function(done) {
 gulp.task('scripts-dist', function(done){
   gulp.src(config.js.src)
     .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
-    .pipe(concat('main.min.js'))
+    .pipe(concat('main.js'))
     .pipe(uglify())
     .pipe(gulp.dest(config.js.dist));
   done();
