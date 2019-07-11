@@ -2,7 +2,7 @@
   "icons": {
     "src": "_src/assets/icons/*.*",
     "dest": "public/assets/icons/",
-    "dist": "docs/"
+    "dist": "docs/assets/icons/"
   },
   "html": {
     "src": "_src/templates/*.html",
