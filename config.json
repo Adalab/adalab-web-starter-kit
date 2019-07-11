@@ -1,7 +1,7 @@
 {
   "icons": {
     "src": "_src/assets/icons/*.*",
-    "dest": "public/",
+    "dest": "public/assets/icons/",
     "dist": "docs/"
   },
   "html": {
