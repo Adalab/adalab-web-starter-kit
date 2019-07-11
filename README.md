@@ -33,6 +33,11 @@ $ gulp docs
 ```
 En la carpeta **docs/** genera los CSS y JS minimizados y sin sourcemaps listos para subir al repo y activar GitHub Pages en `master/docs`.
 
+### Flujo de archivos con gulp
+
+Estas tareas de gulp producen el siguiente flujo de archivos:
+
+![Gulp flow](./gulp-flow.png)
 
 ## Estructura del proyecto
 Nuestro **gulpfile.js** usa un JSON de configuración con las rutas de los archivos a generar/vigilar.
