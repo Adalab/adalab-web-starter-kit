@@ -1,12 +1,12 @@
 # Created by https://www.gitignore.io/api/sass,node,bower,macos
 
-### Bower ###
+# Bower
 bower_components
 .bower-cache
 .bower-registry
 .bower-tmp
 
-### macOS ###
+# macOS
 *.DS_Store
 .AppleDouble
 .LSOverride
@@ -30,8 +30,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-### Node ###
-# Logs
+# Node logs
 logs
 *.log
 npm-debug.log*
@@ -41,14 +40,15 @@ yarn-error.log*
 # Dependency directories
 node_modules/
 
-### Sass ###
+# Sass
 .sass-cache/
 *.css.map
 
-
-### JS Sourcemaps ###
+# JS Sourcemaps
 *.js.map
 
-
-### Public folder
+# Public folder
 public
+
+# vscode
+.vscode
