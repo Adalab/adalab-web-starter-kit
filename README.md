@@ -43,7 +43,7 @@ o lo que en este proyecto es lo mismo:
 ```
 gulp docs
 ```
-En la carpeta **docs/** se generarán los CSS y JS minimizados y sin sourcemaps listos para subir al repo. A continuación súbelos al repo y activa en GitHub Pages la opción `master/docs`, para que GitHub Pages sirva la página desde la carpeta `docs`.
+En la carpeta **docs/** se generarán los CSS y JS minimizados y sin sourcemaps listos para subir al repo. A continuación súbelos al repo y activa en GitHub Pages la opción **master/docs/**, para que GitHub Pages sirva la página desde la carpeta **docs/**.
 
 ---
 
@@ -51,9 +51,9 @@ Si quieres generar los ficheros listos para producción y además subirlos a Git
 ```
 npm run push-docs
 ```
-Este comando borra la carpeta `docs`, la vuelve a generar, crea un commit con los nuevos ficheros y hace un `git push`, todo del tirón. ¿Cómo se te queda el cuerpo?. Si quieres saber cómo funciona échale un ojo al fichero `package.json`.
+Este comando borra la carpeta **docs/**, la vuelve a generar, crea un commit con los nuevos ficheros y hace un `git push`, todo del tirón. ¿Cómo se te queda el cuerpo?. Si quieres saber cómo funciona échale un ojo al fichero `package.json`.
 
-### Flujo de archivos con gulp
+## Flujo de archivos con gulp
 
 Estas tareas de gulp producen el siguiente flujo de archivos:
 
