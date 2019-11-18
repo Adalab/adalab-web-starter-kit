@@ -10,24 +10,22 @@
     "dest": "public/",
     "dist": "docs/"
   },
-	"scss": {
-		"src": "_src/assets/scss/**/*.scss",
-		"dest": "public/assets/css/",
+  "scss": {
+    "src": "_src/assets/scss/**/*.scss",
+    "dest": "public/assets/css/",
     "dist": "docs/assets/css/"
-	},
-	"js": {
-		"src": [
-			"_src/assets/js/main.js"
-		],
-		"dest": "public/assets/js/",
+  },
+  "js": {
+    "src": ["_src/assets/js/**/*.js"],
+    "dest": "public/assets/js/",
     "dist": "docs/assets/js/"
-	},
-	"images": {
+  },
+  "images": {
     "src": "_src/assets/images/**/*.{gif,jpg,jpeg,JPG,JPEG,png,svg}",
     "dest": "public/assets/images/",
     "dist": "docs/assets/images/"
   },
   "watch": {
-   "html": "_src/**/*.html"
+    "html": "_src/**/*.html"
   }
 }
