@@ -16,7 +16,7 @@
     "dist": "docs/assets/css/"
   },
   "js": {
-    "src": ["_src/assets/js/main.js"],
+    "src": ["_src/assets/js/**/*.js"],
     "dest": "public/assets/js/",
     "dist": "docs/assets/js/"
   },
