@@ -3,7 +3,7 @@
 # Adalab web starter kit
 
 Ahoy! Esta es nuestro Starter Kit en node/gulp para este primer contacto con el desarrollo web
-Incluye SCSS, un sistema de plantillas HTMl y un web server.
+Incluye SCSS, un sistema de plantillas HTML y un web server.
 
 ## Guía de inicio rápido
 
