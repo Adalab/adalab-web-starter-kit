@@ -11,7 +11,7 @@
 		"gulp-clean-css": "*",
 		"gulp-combine-mq": "*",
 		"gulp-concat": "*",
-		"gulp-html-partial": "git+https://github.com/adalab/gulp-html-partial.git#v1.0.2",
+		"gulp-html-partial": "git+https://github.com/adalab/gulp-html-partial.git#v1.0.3",
 		"gulp-notify": "*",
 		"gulp-plumber": "*",
 		"gulp-rename": "*",
