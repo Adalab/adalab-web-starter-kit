@@ -40,6 +40,9 @@ yarn-error.log*
 # Dependency directories
 node_modules/
 
+# npm
+package-lock.json
+
 # Sass
 .sass-cache/
 *.css.map
