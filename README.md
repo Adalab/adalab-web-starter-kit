@@ -99,6 +99,10 @@ src
     └─ partials
 ```
 
+## Vídeos
+
+{% embed url="https://www.youtube.com/watch?v=4GwXOJ045Zg" %}
+
 ## Falta algo?
 
 Echas de menos que el kit haga algo en concreto? Pidelo sin problema a través de las issues o si te animas a mejorarlo mándanos un PR :)
