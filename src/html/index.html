@@ -11,21 +11,21 @@
 
   <body>
     <div class="page">
-      <partial src="_header.html" title="Bienvenidos a Adalab"></partial>
-      <partial src="_main.html"></partial>
-      <partial
-        src="_link.html"
+      <include src="./partials/header.html" title="Bienvenidos a Adalab"></include>
+      <include src="./partials/main.html"></include>
+      <include
+        src="./partials/link.html"
         aClass="link__adalab"
         text="Adalab"
         url="https://adalab.es"
-      ></partial>
-      <partial
-        src="_link.html"
+      ></include>
+      <include
+        src="./partials/link.html"
         aClass="link__github"
         text="GitHub"
         url="https://github.com"
-      ></partial>
-      <partial src="_footer.html"></partial>
+      ></include>
+      <include src="./partials/footer.html"></include>
     </div>
   </body>
 </html>

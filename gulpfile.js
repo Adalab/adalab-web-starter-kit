@@ -8,6 +8,7 @@ const config = require('./config.json');
 const del = require('del');
 const gulp = require('gulp');
 const htmlPartial = require('gulp-html-partial');
+const htmlInclude = require('gulp-html-tag-include');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
@@ -49,7 +50,7 @@ gulp.task('css', done => {
   done();
 });
 
-gulp.task('css-dist', function (done) {
+gulp.task('css-dist', done => {
   gulp
     .src(config.css.src)
     .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
@@ -61,20 +62,12 @@ gulp.task('css-dist', function (done) {
 });
 
 gulp.task('html', done => {
-  gulp
-    .src(config.html.src)
-    .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
-    .pipe(htmlPartial({ basePath: config.html.partials }))
-    .pipe(gulp.dest(config.html.dest));
+  gulp.src(config.html.src).pipe(htmlInclude()).pipe(gulp.dest(config.html.dest));
   done();
 });
 
-gulp.task('html-dist', function (done) {
-  gulp
-    .src(config.html.src)
-    .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
-    .pipe(htmlPartial({ basePath: config.html.partials }))
-    .pipe(gulp.dest(config.html.dist));
+gulp.task('html-dist', done => {
+  gulp.src(config.html.src).pipe(htmlInclude()).pipe(gulp.dest(config.html.dist));
   done();
 });
 
@@ -98,7 +91,7 @@ gulp.task('js', done => {
   done();
 });
 
-gulp.task('js-dist', function (done) {
+gulp.task('js-dist', done => {
   gulp
     .src(config.js.src)
     .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
@@ -108,7 +101,7 @@ gulp.task('js-dist', function (done) {
   done();
 });
 
-gulp.task('images-dist', function (done) {
+gulp.task('images-dist', done => {
   gulp
     .src(config.images.src)
     .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
