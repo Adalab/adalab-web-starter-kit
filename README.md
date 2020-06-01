@@ -99,9 +99,11 @@ src
     └─ partials
 ```
 
-## Vídeos
+## Vídeotutoriales del Starter kit
 
-{% embed url="https://www.youtube.com/watch?v=4GwXOJ045Zg" %}
+- [Qué es, trabajar con la versión de desarrollo y rutas relativas](https://www.youtube.com/watch?v=XwvhXvBijos)
+- [Migración de un proyecto, trabajar con la versión de producción y GitHub Pages](https://www.youtube.com/watch?v=qqGClcgt9Uc)
+- [Motor de plantillas](https://www.youtube.com/watch?v=4GwXOJ045Zg)
 
 ## Falta algo?
 
