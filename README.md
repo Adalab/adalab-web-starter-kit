@@ -20,32 +20,24 @@ En el Kit hay 3 tipos de ficheros y carpetas:
 
 1. **Crea tu propio repositorio.**
 1. Descarga este **Starter kit desde GitHub**.
-   - No recomendamos que clones este repo puesto que no podrás añadir commits.
+   - No recomendamos que clones este repo ya que no podrás añadir commits.
 1. **Copia todos los ficheros** de este Starter kit en la carpeta raíz de tu repositorio.
    - Recuerda que debes copiar **también los ficheros ocultos**.
    - Si has decidido clonar este repo, no debes copiar la carpeta `.git`. Si lo haces estarás machacando tu propio repositorio.
 1. **Abre una terminal** en la carpeta raíz de tu repositorio.
-1. **Instala las dependencias** locales ejecutando en la terminal el comando `npm install`.
+1. **Instala las dependencias** locales ejecutando en la terminal el comando:
 
-#### ¿Y qué estoy haciendo con el comando `npm install`?
+```bash
+npm install
+```
 
-[Node package manager o npm](https://npmjs.com) es un sistema de gestión de dependencias que viene dentro de `node`. Hemos comentado que nuestro Starter kit tiene un motor de plantillas HTML, SASS y un servidor. Esto son dependencias, paquetes o módulos creados por terceras personas. Estas dependencias están configuradas dentro del fichero [`./package.json`](./package.json).
+### Pasos para arrancar el proyecto:
 
-El comando `npm install` lee el apartado `dependencies` del fichero `package.json`, las busca en Internet, las descarga e instala en vuestro proyecto en una carpeta llamada `node_modules/`.
+Una vez hemos instalado las dependencias, vamos a arrancar el proyecto. **El proyecto hay que arrancarlo cada vez que te pongas a programar.** Para ello ejecuta el comando:
 
-Como `npm install` lo que hace es instalar dependencias, solo debemos ejecutar este comando la primera vez que arrancamos el proyecto. Tampoco pasa nada si lo ejecutamos más veces, pero no es necesario.
-
-### Pasos a seguir en un proyecto colaborativo
-
-Si el proyecto que estás creando es un proyecto de equipo y vas a trabajar con más compañeras continúa realizando los siguientes pasos:
-
-1. **Sube** todo el código actual a tu repositorio.
-1. Dile a tus compañeras que se **clonen** tu repositorio.
-1. Cada compañera debe ejecutar `npm install` para **installar todos los módulos y dependencias**.
-
-### Pasos para arrancar el proyecto
-
-Una vez hemos instalado las dependencias, vamos a arrancar el proyecto. **El proyecto hay que arrancarlo cada vez que te pongas a programar.** Para ello ejecuta el comando `npm start`.
+```bash
+npm start
+```
 
 Este comando:
 
@@ -57,63 +49,28 @@ Este comando:
 
 Después de ejecutar `npm start` ya puedes empezar a editar todos los ficheros que están dentro de la carpeta `src/` y programar cómodamente.
 
-### Pasos para publicar el proyecto en GitHub Pages
+### Pasos para publicar el proyecto en GitHub Pages:
 
-Cuando ejecutamos `npm start` los ficheros se generan en la carpeta `public/` en modo desarrollo. Esto quiere decir que se generan con una estructura cómoda para poder desarrollar, para poder inspeccionarlos en el DevTools...
+Para generar tu página para producción ejecuta el comando:
 
-Para publicar los ficheros en GitHub Pages
-
-
-
-
-
-
-
-
-
-
-
-## Tareas de gulp incluidas
-
-### Inicio de un web server para desarrollo
-
-```
-npm start
-```
-
-o lo que en este proyecto es lo mismo:
-
-```
-gulp
-```
-
-Lanza un webserver con BrowserSync y varios watchers estarán pendientes de los archivos SCSS/JS/HTML, en la carpeta **public/**, para recargar el navegador cuando se necesite.
-
-### Versión lista para subir a producción
-
-Para generar los ficheros para producción ejecuta:
-
-```
+```bash
 npm run docs
 ```
 
-o lo que en este proyecto es lo mismo:
+Y a continuación:
 
-```
-gulp docs
-```
+1. Sube a tu repo la carpeta `docs/` que se te acaba de generar.
+1. Entra en la pestaña `settings` de tu repo.
+1. Y en el apartado de GitHub Pages activa la opción **master branch /docs folder**.
+1. Y ya estaría!!!
 
-En la carpeta **docs/** se generarán los CSS y JS minimizados y sin sourcemaps listos para subir al repo. A continuación súbelos al repo y activa en GitHub Pages la opción **master/docs/**, para que GitHub Pages sirva la página desde la carpeta **docs/**.
+El comando:
 
----
-
-Si quieres generar los ficheros listos para producción y además subirlos a GitHub directamente ejecuta el siguiente comando:
-
-```
+```bash
 npm run push-docs
 ```
 
-Este comando borra la carpeta **docs/**, la vuelve a generar, crea un commit con los nuevos ficheros y hace un `git push`, todo del tirón. ¿Cómo se te queda el cuerpo?. Si quieres saber cómo funciona échale un ojo al fichero `package.json`.
+Es un atajo que nos genera la versión de producción y hace push de la carpeta `docs/` del tirón. Te recomendamos ver el fichero `package.json` para aprender cómo funciona.
 
 ## Flujo de archivos con gulp
 
@@ -123,47 +80,25 @@ Estas tareas de gulp producen el siguiente flujo de archivos:
 
 ## Estructura del proyecto
 
-Nuestro **gulpfile.js** usa un JSON de configuración con las rutas de los archivos a generar/vigilar.
+Nuestro **gulpfile.js** usa un JSON de configuración con las rutas de los archivos a generar / observar.
 
 La estructura de carpetas tiene esta pinta:
 
 ```
-/
-`- _src
-   |- api
-   |  |- data.json // para crearnos un servidor de datos local
-   |- assets
-   |  |- icons
-   |  |- images
-   |  |- js
-   |  `- scss
-   |     `- core
-   |
-   `- templates
-      `- partials
-
+src
+ ├─ api
+ |  └─ data.json // para crearnos un servidor de datos local
+ ├─ images
+ ├─ js
+ ├─ scss
+ |  ├─ components
+ |  ├─ core
+ |  ├─ layout
+ |  └─ pages
+ └─ html
+    └─ partials
 ```
-
-## HTML
-
-Viene incluído el paquete [**gulp-html-partial**](https://www.npmjs.com/package/gulp-html-partial) que nos va a permitir tener un sistema de plantillas html
-
-## Imágenes e iconos
-
-Tenemos en **\_src/** una carpeta para las imágenes del proyecto y una para los iconos como el favicon o los iconos de dispositivos móviles. Estos últimos se generan en la raíz de las carpetas **public/** y **docs/**
-
-## CSS
-
-Viene incluído el paquete [**gulp-combine-mq**](https://www.npmjs.com/package/gulp-combine-mq) que agrupa todas las mediaqueries al final del documento css.
-
-## JS
-
-Podemos usar parciales de JS: en el JSON de configuración, **config.json** especificamos los archivos JS que utilizamos y en el orden que deben procesarse.
-
-## ¿Cómo actualizo si tengo una versión anterior?
-
-En principio puedes descargar todos los archivos fuera de **\_src/** y sustituir los de tu proyecto. Además deberías replicar la estructura de carpetas dentro de **\_src/**.
 
 ## Falta algo?
 
-Echas de menos que el kit haga algo en concreto? Pidelo sin problema a través de los Issues o si te animas a mejorarlo mándanos un PR :)
+Echas de menos que el kit haga algo en concreto? Pidelo sin problema a través de las issues o si te animas a mejorarlo mándanos un PR :)

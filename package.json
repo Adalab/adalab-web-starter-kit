@@ -11,7 +11,6 @@
 		"gulp-clean-css": "*",
 		"gulp-combine-mq": "*",
 		"gulp-concat": "*",
-		"gulp-html-partial": "git+https://github.com/adalab/gulp-html-partial.git#v1.0.4",
 		"gulp-html-tag-include": "^1.0.1",
 		"gulp-notify": "*",
 		"gulp-plumber": "*",
