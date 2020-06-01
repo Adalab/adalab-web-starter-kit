@@ -2,7 +2,7 @@
 
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync');
-const combineMq = require('gulp-combine-mq');
+// const combineMq = require('gulp-combine-mq');
 const concat = require('gulp-concat');
 const config = require('./config.json');
 const del = require('del');
@@ -14,64 +14,83 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify-es').default;
 
-// > Dev tasks
-// >> Delete Public folder
-gulp.task('clean', del.bind(null, ['public']));
+// secondary tasks
 
-// >> Process HTML files
-gulp.task('html', function(done) {
-  gulp
-    .src(config.html.src)
-    .pipe(
-      plumber({ errorHandler: notify.onError('Error: <%= error.message %>') })
-    )
-    .pipe(
-      htmlPartial({
-        basePath: config.html.partials
-      })
-    )
-    .pipe(gulp.dest(config.html.dest));
+gulp.task('api', done => {
+  gulp.src(config.api.src).pipe(gulp.dest(config.api.dest));
   done();
 });
 
-// >> Process SCSS files (extended + sourcemaps +  autoprefixer)
-gulp.task('styles', function(done) {
+gulp.task('api-dist', done => {
+  gulp.src(config.api.src).pipe(gulp.dest(config.api.dist));
+  done();
+});
+
+gulp.task('bs-reload', done => {
+  browserSync.reload();
+  done();
+});
+
+gulp.task('clean', del.bind(null, [config.env.dev.dest]));
+
+gulp.task('clean-dist', del.bind(null, [config.env.producction.dest]));
+
+gulp.task('css', done => {
   gulp
-    .src(config.scss.src)
+    .src(config.css.src)
     .pipe(sourcemaps.init())
-    .pipe(
-      plumber({ errorHandler: notify.onError('Error: <%= error.message %>') })
-    )
-    .pipe(
-      sass({
-        outputStyle: 'extended'
-      })
-    )
-    .pipe(
-      combineMq({
-        beautify: true
-      })
-    )
-    .pipe(
-      autoprefixer({
-        browsers: ['last 2 versions', 'ie >= 10'],
-        cascade: false
-      })
-    )
+    .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
+    .pipe(sass({ outputStyle: 'extended' }))
+    // .pipe(combineMq({ beautify: true }))
+    .pipe(autoprefixer({ cascade: false }))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(config.scss.dest))
+    .pipe(gulp.dest(config.css.dest))
     .pipe(browserSync.reload({ stream: true }));
   done();
 });
 
-// >> Concatenate JS files with sourcemaps
-gulp.task('scripts', function(done) {
+gulp.task('css-dist', function (done) {
+  gulp
+    .src(config.css.src)
+    .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
+    .pipe(sass({ outputStyle: 'compressed' }))
+    // .pipe(combineMq({ beautify: false }))
+    .pipe(autoprefixer({ cascade: false }))
+    .pipe(gulp.dest(config.css.dist));
+  done();
+});
+
+gulp.task('html', done => {
+  gulp
+    .src(config.html.src)
+    .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
+    .pipe(htmlPartial({ basePath: config.html.partials }))
+    .pipe(gulp.dest(config.html.dest));
+  done();
+});
+
+gulp.task('html-dist', function (done) {
+  gulp
+    .src(config.html.src)
+    .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
+    .pipe(htmlPartial({ basePath: config.html.partials }))
+    .pipe(gulp.dest(config.html.dist));
+  done();
+});
+
+gulp.task('images', done => {
+  gulp
+    .src(config.images.src)
+    .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
+    .pipe(gulp.dest(config.images.dest));
+  done();
+});
+
+gulp.task('js', done => {
   gulp
     .src(config.js.src)
     .pipe(sourcemaps.init())
-    .pipe(
-      plumber({ errorHandler: notify.onError('Error: <%= error.message %>') })
-    )
+    .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
     .pipe(concat('main.js'))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(config.js.dest))
@@ -79,167 +98,51 @@ gulp.task('scripts', function(done) {
   done();
 });
 
-// >> Copy image files
-gulp.task('images', function(done) {
-  gulp
-    .src(config.images.src)
-    .pipe(
-      plumber({ errorHandler: notify.onError('Error: <%= error.message %>') })
-    )
-    .pipe(gulp.dest(config.images.dest));
-  done();
-});
-
-// >> Copy api files
-gulp.task('api', function(done) {
-  gulp.src(config.api.src).pipe(gulp.dest(config.api.dest));
-  done();
-});
-
-// >> Copy icon files
-gulp.task('icons', function(done) {
-  gulp
-    .src(config.icons.src)
-    .pipe(
-      plumber({ errorHandler: notify.onError('Error: <%= error.message %>') })
-    )
-    .pipe(gulp.dest(config.icons.dest));
-  done();
-});
-
-// > Production Tasks
-// > Delete Public folder
-gulp.task('clean-dist', del.bind(null, ['docs']));
-
-// >> Process HTML files
-gulp.task('html-dist', function(done) {
-  gulp
-    .src(config.html.src)
-    .pipe(
-      plumber({ errorHandler: notify.onError('Error: <%= error.message %>') })
-    )
-    .pipe(
-      htmlPartial({
-        basePath: config.html.partials
-      })
-    )
-    .pipe(gulp.dest(config.html.dist));
-  done();
-});
-
-// >> Process SCSS files (compressed + autoprefixer)
-gulp.task('styles-dist', function(done) {
-  gulp
-    .src(config.scss.src)
-    .pipe(
-      plumber({ errorHandler: notify.onError('Error: <%= error.message %>') })
-    )
-    .pipe(
-      sass({
-        outputStyle: 'compressed'
-      })
-    )
-    .pipe(
-      combineMq({
-        beautify: false
-      })
-    )
-    .pipe(
-      autoprefixer({
-        browsers: ['last 2 versions', 'ie >= 10'],
-        cascade: false
-      })
-    )
-    .pipe(gulp.dest(config.scss.dist));
-  done();
-});
-
-// >> Concatenate and minify JS files w/o sourcemaps
-gulp.task('scripts-dist', function(done) {
+gulp.task('js-dist', function (done) {
   gulp
     .src(config.js.src)
-    .pipe(
-      plumber({ errorHandler: notify.onError('Error: <%= error.message %>') })
-    )
+    .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
     .pipe(concat('main.js'))
     .pipe(uglify())
     .pipe(gulp.dest(config.js.dist));
   done();
 });
 
-// >> Copy image files
-gulp.task('api-dist', function(done) {
-  gulp.src(config.api.src).pipe(gulp.dest(config.api.dist));
-  done();
-});
-
-// >> Copy image files
-gulp.task('images-dist', function(done) {
+gulp.task('images-dist', function (done) {
   gulp
     .src(config.images.src)
-    .pipe(
-      plumber({ errorHandler: notify.onError('Error: <%= error.message %>') })
-    )
+    .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
     .pipe(gulp.dest(config.images.dist));
   done();
 });
 
-// >> Copy icon files
-gulp.task('icons-dist', function(done) {
-  gulp
-    .src(config.icons.src)
-    .pipe(
-      plumber({ errorHandler: notify.onError('Error: <%= error.message %>') })
-    )
-    .pipe(gulp.dest(config.icons.dist));
-  done();
-});
+// main tasks
 
-// > Watchers + BrowserSync server
 gulp.task(
   'default',
-  gulp.series(
-    ['clean', 'html', 'styles', 'scripts', 'images', 'api', 'icons'],
-    function(done) {
-      browserSync.init({
-        server: {
-          baseDir: './public/'
-        }
-      });
-      gulp.watch(config.watch.html, gulp.series(['html', 'bs-reload']));
-      gulp.watch(config.images.src, gulp.series(['images', 'bs-reload']));
-      gulp.watch(config.api.src, gulp.series(['api', 'bs-reload']));
-      gulp.watch(config.icons.src, gulp.series(['icons', 'bs-reload']));
-      gulp.watch(config.scss.src, gulp.series('styles'));
-      gulp.watch(config.js.src, gulp.series(['scripts', 'bs-reload']));
-      done();
-    }
-  )
+  gulp.series(['clean', 'api', 'html', 'css', 'js', 'images'], done => {
+    browserSync.init({ server: { baseDir: './public/' } });
+    gulp.watch(config.api.src, gulp.series(['api', 'bs-reload']));
+    gulp.watch(config.css.src, gulp.series('css'));
+    gulp.watch(config.images.src, gulp.series(['images', 'bs-reload']));
+    gulp.watch(config.js.src, gulp.series(['js', 'bs-reload']));
+    gulp.watch(config.watch.html, gulp.series(['html', 'bs-reload']));
+    done();
+  })
 );
 
-// > Build a production-ready version of your proyect
 gulp.task(
   'docs',
   gulp.series(
     [
       'clean-dist',
-      'html-dist',
-      'styles-dist',
-      'scripts-dist',
-      'images-dist',
       'api-dist',
-      'icons-dist'
+      'css-dist',
+      'html-dist',
+      'js-dist',
+      'images-dist'
+      // 'icons-dist'
     ],
-    function(done) {
-      // eslint-disable-next-line no-console
-      console.log('🦄 Build OK!');
-      done();
-    }
+    done => done()
   )
 );
-
-// > Recarga las ventanas del navegador
-gulp.task('bs-reload', function(done) {
-  browserSync.reload();
-  done();
-});

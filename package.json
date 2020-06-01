@@ -1,21 +1,22 @@
 {
 	"name": "adalab-web-starter-kit",
-	"version": "2.0.2",
+	"version": "3.0.0",
 	"description": "Adalab web starter kit",
 	"dependencies": {
 		"browser-sync": "^2.26.7",
 		"del": "^5.1.0",
-		"eslint": "^6.8.0",
+		"eslint": "^7.1.0",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "*",
 		"gulp-clean-css": "*",
 		"gulp-combine-mq": "*",
 		"gulp-concat": "*",
 		"gulp-html-partial": "git+https://github.com/adalab/gulp-html-partial.git#v1.0.4",
+		"gulp-html-tag-include": "^1.0.1",
 		"gulp-notify": "*",
 		"gulp-plumber": "*",
 		"gulp-rename": "*",
-		"gulp-sass": "^4.0.2",
+		"gulp-sass": "^4.1.0",
 		"gulp-sourcemaps": "*",
 		"gulp-uglify-es": "^2.0.0",
 		"gulp-zip": "*",
@@ -24,14 +25,13 @@
 	"scripts": {
 		"start": "gulp",
 		"docs": "rm -rf docs && gulp docs",
-		"push-docs": "rm -rf docs && gulp docs && git add docs/* && git commit -m \"Update docs\" && git push",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"push-docs": "rm -rf docs && gulp docs && git add docs/* && git commit -m \"Update docs\" && git push"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+ssh://git@github.com:Adalab/Adalab-web-starter-kit.git"
+		"url": "git+ssh://git@github.com:Adalab/adalab-web-starter-kit.git"
 	},
 	"author": "Adalab",
 	"license": "MIT",
-	"homepage": "https://github.com/Adalab/Adalab-web-starter-kit"
+	"homepage": "https://github.com/adalab/adalab-web-starter-kit"
 }

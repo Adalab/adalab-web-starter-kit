@@ -1,36 +1,41 @@
 {
-  "icons": {
-    "src": "_src/assets/icons/*.*",
-    "dest": "public/",
-    "dist": "docs/"
+  "env": {
+    "dev": {
+      "dest": "public"
+    },
+    "producction": {
+      "dest": "docs"
+    }
   },
-  "html": {
-    "src": "_src/templates/*.html",
-    "partials": "_src/templates/partials/",
-    "dest": "public/",
-    "dist": "docs/"
+  "api": {
+    "src": "src/api/*",
+    "dest": "public/api/",
+    "dist": "docs/api/"
   },
-  "scss": {
-    "src": "_src/assets/scss/**/*.scss",
+  "css": {
+    "src": "src/assets/scss/**/*.scss",
     "dest": "public/assets/css/",
     "dist": "docs/assets/css/"
   },
+  "html": {
+    "src": "src/templates/*.html",
+    "partials": "src/templates/partials/",
+    "dest": "public/",
+    "dist": "docs/"
+  },
   "js": {
-    "src": ["_src/assets/js/**/*.js"],
+    "src": [
+      "src/assets/js/**/*.js"
+    ],
     "dest": "public/assets/js/",
     "dist": "docs/assets/js/"
   },
   "images": {
-    "src": "_src/assets/images/**/*.{gif,jpg,jpeg,JPG,JPEG,png,svg}",
+    "src": "src/assets/images/**/*.{gif,jpg,jpeg,JPG,JPEG,png,svg}",
     "dest": "public/assets/images/",
     "dist": "docs/assets/images/"
   },
-  "api": {
-    "src": "_src/api/*",
-    "dest": "public/api/",
-    "dist": "docs/api/"
-  },
   "watch": {
-    "html": "_src/**/*.html"
+    "html": "src/**/*.html"
   }
 }
