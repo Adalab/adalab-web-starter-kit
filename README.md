@@ -64,32 +64,44 @@ Y a continuación:
 1. Y en el apartado de GitHub Pages activa la opción **master branch /docs folder**.
 1. Y ya estaría!!!
 
-El comando:
+Además, los comandos:
 
 ```bash
 npm run push-docs
 ```
+o
 
-Es un atajo que nos genera la versión de producción y hace push de la carpeta `docs/` del tirón. Te recomendamos ver el fichero `package.json` para aprender cómo funciona.
+```bash
+npm run deploy
+```
 
-## Flujo de archivos con gulp
+son un atajo que nos genera la versión de producción y hace push de la carpeta `docs/` del tirón. Te recomendamos ver el fichero `package.json` para aprender cómo funciona.
 
-Estas tareas de gulp producen el siguiente flujo de archivos:
+## Flujo de archivos con Gulp
+
+Estas tareas de Gulp producen el siguiente flujo de archivos:
 
 ![Gulp flow](./gulp-flow.png)
 
-## Estructura del proyecto
+## `gulpfile.js` y `config.json`
 
-Nuestro **gulpfile.js** usa un JSON de configuración con las rutas de los archivos a generar / observar.
+Nuestro **gulpfile.js** usa el fichero `config.json` de configuración con las rutas de los archivos a generar / observar.
+
+De esta manera separarmos las acciones que están en `gulpfile.js` de la configuración de las acciones que están en `config.json`.
+
+## Estructura de carpetas
 
 La estructura de carpetas tiene esta pinta:
 
 ```
 src
- ├─ api
- |  └─ data.json // para crearnos un servidor de datos local
+ ├─ api // los ficheros de esta carpeta se copian en public/api/
+ |  └─ data.json
  ├─ images
- ├─ js
+ |  └─ logo.jpg
+ ├─ js // los ficheros de esta carpeta se concatenan en el fichero main.js y este se guarda en public/main.js
+ |  ├─ main.js
+ |  └─ events.js
  ├─ scss
  |  ├─ components
  |  ├─ core

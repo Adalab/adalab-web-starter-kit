@@ -24,7 +24,8 @@
 	"scripts": {
 		"start": "gulp",
 		"docs": "rm -rf docs && gulp docs",
-		"push-docs": "rm -rf docs && gulp docs && git add docs/* && git commit -m \"Update docs\" && git push"
+		"push-docs": "rm -rf docs && gulp docs && git add docs/* && git commit -m \"Update docs\" && git push",
+		"deploy": "npm run push-docs"
 	},
 	"repository": {
 		"type": "git",
