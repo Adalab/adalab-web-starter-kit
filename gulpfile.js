@@ -7,7 +7,6 @@ const concat = require('gulp-concat');
 const config = require('./config.json');
 const del = require('del');
 const gulp = require('gulp');
-const htmlPartial = require('gulp-html-partial');
 const htmlInclude = require('gulp-html-tag-include');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
