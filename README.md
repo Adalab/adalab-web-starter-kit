@@ -111,6 +111,8 @@ src
     └─ partials
 ```
 
+> **NOTA:** Los partials de HTML y SASS del proyecto son orientativos. Te recomendamos usar los que quieras, y borrar los que no uses.
+
 ## Vídeotutoriales del Starter kit
 
 - [Qué es, trabajar con la versión de desarrollo y rutas relativas](https://www.youtube.com/watch?v=XwvhXvBijos)
