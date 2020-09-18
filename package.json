@@ -1,6 +1,6 @@
 {
 	"name": "adalab-web-starter-kit",
-	"version": "3.0.0",
+	"version": "3.0.1",
 	"description": "Adalab web starter kit",
 	"dependencies": {
 		"browser-sync": "^2.26.12",
