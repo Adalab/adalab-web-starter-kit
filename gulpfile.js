@@ -10,7 +10,7 @@ const gulp = require('gulp');
 const htmlInclude = require('gulp-html-tag-include');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
-const sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('node-sass'));
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify-es').default;
 

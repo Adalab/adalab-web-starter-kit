@@ -15,11 +15,13 @@
 		"gulp-notify": "*",
 		"gulp-plumber": "*",
 		"gulp-rename": "*",
-		"gulp-sass": "^4.1.0",
+		"gulp-sass": "^5.0.0",
 		"gulp-sourcemaps": "*",
 		"gulp-uglify-es": "^2.0.0",
 		"gulp-zip": "*",
-		"run-sequence": "*"
+		"node-sass": "^6.0.1",
+		"run-sequence": "*",
+		"sass": "^1.35.2"
 	},
 	"devDependencies": {
 		"lodash.template": ">=4.5.0"
