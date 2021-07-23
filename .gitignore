@@ -11,6 +11,9 @@ bower_components
 .AppleDouble
 .LSOverride
 
+# Linux
+*.directory
+
 # Thumbnails
 ._*
 
