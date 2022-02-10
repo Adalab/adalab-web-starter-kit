@@ -19,7 +19,7 @@
 		"gulp-sourcemaps": "*",
 		"gulp-uglify-es": "^2.0.0",
 		"gulp-zip": "*",
-		"node-sass": "^6.0.1",
+		"node-sass": "^7.0.0",
 		"run-sequence": "*",
 		"sass": "^1.35.2"
 	},
