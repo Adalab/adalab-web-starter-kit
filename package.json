@@ -3,9 +3,9 @@
 	"version": "3.0.1",
 	"description": "Adalab web starter kit",
 	"dependencies": {
-		"browser-sync": "2.26.14",
+		"browser-sync": "^2.27.9",
 		"del": "^6.0.0",
-		"eslint": "^8.10.0",
+		"eslint": "^8.12.0",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^8.0.0",
 		"gulp-clean-css": "^4.3.0",
@@ -25,10 +25,6 @@
 	},
 	"devDependencies": {
 		"lodash.template": ">=4.5.0"
-	},
-	"overrides": {
-		"browser-sync-client": "2.26.14",
-		"browser-sync-ui": "2.26.14"
 	},
 	"scripts": {
 		"start": "./node_modules/.bin/gulp",
