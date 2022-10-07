@@ -19,9 +19,8 @@
 		"gulp-sourcemaps": "*",
 		"gulp-uglify-es": "^2.0.0",
 		"gulp-zip": "*",
-		"node-sass": "^6.0.1",
-		"run-sequence": "*",
-		"sass": "^1.35.2"
+		"node-sass": "^7.0.3",
+		"run-sequence": "*"
 	},
 	"devDependencies": {
 		"lodash.template": ">=4.5.0"
