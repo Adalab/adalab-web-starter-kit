@@ -1,35 +1,22 @@
 {
 	"name": "adalab-web-starter-kit",
-	"version": "3.0.1",
+	"version": "4.0.0",
 	"description": "Adalab web starter kit",
+	"type": "module",
 	"dependencies": {
-		"browser-sync": "^2.26.12",
-		"del": "^5.1.0",
-		"eslint": "^7.1.0",
-		"gulp": "^4.0.2",
-		"gulp-autoprefixer": "*",
-		"gulp-clean-css": "*",
-		"gulp-combine-mq": "*",
-		"gulp-concat": "*",
-		"gulp-html-tag-include": "^1.0.1",
-		"gulp-notify": "*",
-		"gulp-plumber": "*",
-		"gulp-rename": "*",
-		"gulp-sass": "^5.0.0",
-		"gulp-sourcemaps": "*",
-		"gulp-uglify-es": "^2.0.0",
-		"gulp-zip": "*",
-		"node-sass": "^7.0.3",
-		"run-sequence": "*"
 	},
 	"devDependencies": {
-		"lodash.template": ">=4.5.0"
+    "sass": "^1.69.4",
+    "sharp": "^0.32.6",
+    "vite": "^4.4.5",
+    "vite-plugin-html-inject": "^1.0.4",
+    "vite-plugin-image-optimizer": "^1.1.7"
 	},
 	"scripts": {
-		"start": "./node_modules/.bin/gulp",
-		"docs": "rm -rf docs && ./node_modules/.bin/gulp docs",
-		"push-docs": "rm -rf docs && gulp docs && git add docs/* && git commit -m \"Update docs\" && git push",
-		"deploy": "npm run push-docs"
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build --emptyOutDir",
+    "preview": "vite preview"
 	},
 	"repository": {
 		"type": "git",
