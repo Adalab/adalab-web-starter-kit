@@ -55,9 +55,6 @@ dist-ssr
 # JS Sourcemaps
 *.js.map
 
-# Public folder
-public
-
 # vscode
 .vscode/*
 !.vscode/extensions.json
