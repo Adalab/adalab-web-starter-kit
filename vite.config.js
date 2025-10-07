@@ -42,7 +42,6 @@ export default defineConfig({
     rollupOptions: {
       input: inputFilesList,
       output: {
-        sourcemap: true,
         entryFileNames: ({name}) => {
           if( name === 'main' ) {
             return 'js/main.js';
