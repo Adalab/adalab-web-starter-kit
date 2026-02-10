@@ -5,11 +5,11 @@
 	"type": "module",
 	"devDependencies": {
 		"@vituum/vite-plugin-concat": "^1.1.1",
-		"sass": "^1.83.4",
-		"sharp": "^0.34.4",
-		"vite": "^7.1.9",
+		"sass": "^1.97.3",
+		"sharp": "^0.34.5",
+		"vite": "^7.3.1",
 		"vite-plugin-html-inject": "^1.1.2",
-		"vite-plugin-image-optimizer": "^1.1.7"
+		"vite-plugin-image-optimizer": "^2.0.3"
 	},
 	"scripts": {
 		"start": "vite",
