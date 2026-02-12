@@ -1,0 +1,36 @@
+.plan-box {
+    background-color: #529CF1; 
+    width: 100%; 
+    min-height: 65vh;
+    padding: 3rem 0.5rem 0 2%;
+    color: #FEFEFE; 
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center; 
+    text-align: left;
+    gap: 1rem;
+}
+section h1 {
+    font-size: 2rem;
+
+}
+section h2 {
+    font-size: 1rem;
+
+}
+
+section h4 {
+    font-size: 10px;
+}
+.plan-box button {
+  background-color: #26B758;
+  color: white;
+  border: none;
+  width: 150px;
+  min-width: 10%;
+  margin: 2%;
+  padding: 0.6rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+}

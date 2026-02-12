@@ -1,0 +1,70 @@
+*{
+    margin: 0%;
+    
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #000;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-size: 1rem;
+}
+
+
+
+nav ul{
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: #000;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-size: medium;
+    
+    
+}
+
+
+nav ul li{
+    list-style: none;
+    margin: 0 15px;
+    font-size: 1rem;
+}
+
+.navbar{
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+
+
+body{
+    background-color: #121212;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.benefits-section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #121212;
+    text-align: center;
+    padding: 50px;
+}
